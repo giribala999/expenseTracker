@@ -1,6 +1,5 @@
 package com.app.expensetracker.entity;
 
-import com.app.expensetracker.service.CatTransResponse;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -12,6 +11,7 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 
 public class User {
@@ -43,5 +43,4 @@ public class User {
     @JoinColumn(name = "trans_id")
     private  Transaction transaction;
 
-    }
-
+}
