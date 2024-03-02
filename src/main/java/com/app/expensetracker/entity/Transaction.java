@@ -45,11 +45,11 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private  User user;
+    // @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JoinColumn(name = "user_id")
+    // private  User user;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "cat_id")
-    private  Category category;
+    // @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JoinColumn(name = "cat_id")
+    // private  Category category;
 }
