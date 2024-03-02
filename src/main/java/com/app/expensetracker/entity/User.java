@@ -35,12 +35,12 @@ public class User {
     @Column(name="balance")
     private double balance;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "cat_id")
-    private  Category category;
+    // @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JoinColumn(name = "cat_id")
+    // private  Category category;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "trans_id")
-    private  Transaction transaction;
+    // @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JoinColumn(name = "trans_id")
+    // private  Transaction transaction;
 
 }
