@@ -25,8 +25,8 @@ public class Category {
     @Column(name="users")
     private List<String> users;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private  User user;
+    // @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    // @JoinColumn(name = "user_id")
+    // private  User user;
 
 }
