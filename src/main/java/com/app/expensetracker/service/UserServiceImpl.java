@@ -1,5 +1,4 @@
 package com.app.expensetracker.service;
-
 import com.app.expensetracker.dao.UserRepository;
 import com.app.expensetracker.dto.UserCreateRequest;
 import com.app.expensetracker.entity.User;
@@ -14,10 +13,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-//    public void saveUser(User user){
-//
-//        userRepository.save(user);
-//    }
 
     @Override
     @Transactional
@@ -39,10 +34,6 @@ public class UserServiceImpl implements UserService {
         }
 
     }
-//    public void updateUser(User user){
-//
-//        userRepository.save(user);
-//    }
 
     @Override
     @Transactional

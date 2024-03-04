@@ -15,11 +15,6 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     private TransactionRepository transactionRepository;
 
-//    public void saveTransaction(Transaction transaction){
-//
-//        transactionRepository.save(transaction);
-//    }
-
     @Override
     @Transactional
     public Transaction createTransaction(TransactionCreateRequest transactionCreateRequest){
@@ -40,9 +35,6 @@ public class TransactionServiceImpl implements TransactionService {
         }
 
     }
-//    public void updateTransaction(Transaction transaction){
-//        transactionRepository.save(transaction);
-//    }
 
     @Override
     @Transactional

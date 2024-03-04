@@ -17,7 +17,7 @@ public class CategoryCreateRequest {
     @NotBlank
     private String categoryName;
 
-    @Size(min=2,message="Enter 2 users")
+    @Size(min=2,message="Enter 2 users only")
     private List<String> users;
 
     public Category to(){

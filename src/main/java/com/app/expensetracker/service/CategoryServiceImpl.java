@@ -1,5 +1,4 @@
 package com.app.expensetracker.service;
-
 import com.app.expensetracker.dao.CategoryRepository;
 import com.app.expensetracker.dto.CategoryCreateRequest;
 import com.app.expensetracker.entity.Category;
@@ -14,11 +13,6 @@ import java.util.Optional;
 public class CategoryServiceImpl implements CategoryService{
     @Autowired
     private CategoryRepository categoryRepository;
-
-//    public void saveCategory(Category category){
-//
-//        categoryRepository.save(category);
-//    }
 
     @Override
     @Transactional

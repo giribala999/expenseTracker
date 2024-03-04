@@ -2,6 +2,8 @@ package com.app.expensetracker.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
 import java.util.List;
 
 @Entity
@@ -15,7 +17,8 @@ import java.util.List;
 
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="cat_id",nullable = false)
     private String cat_id;
 
@@ -25,8 +28,8 @@ public class Category {
     @Column(name="users")
     private List<String> users;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private  User user;
+//    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private  User user;
 
 }
