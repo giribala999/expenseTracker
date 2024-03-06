@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @SpringBootApplication //(exclude = {DataSourceAutoConfiguration.class })
 //@ComponentScan(basePackages = "com.app.*")
 //@EntityScan("com.app.*")
-@EnableJpaRepositories(basePackages = "com.app.expensetracker.repository")
+//@EnableJpaRepositories(basePackages = "com.app.expensetracker.repository")
 
 public class ExpenseTrackerApplication {
 

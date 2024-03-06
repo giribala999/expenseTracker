@@ -29,21 +29,14 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
-    @Column(name="cat_ids")
-    private List<String> cat_ids;
-
-    @Column(name="transactions")
-    private List<Integer> transactions;
-
     @Column(name="balance")
     private double balance;
 
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name = "cat_id")
-//    private  Category category;
-//
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name = "trans_id")
-//    private  Transaction transaction;
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Category> categories;
+
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Transaction> transactions;
 
 }

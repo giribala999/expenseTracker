@@ -23,7 +23,7 @@ public class TransactionCreateRequest {
     private double val;
 
     @NotBlank
-    private String cat_id;
+    private String categories;
 
     public Transaction to(){
         return Transaction.builder()
@@ -32,7 +32,7 @@ public class TransactionCreateRequest {
                 .lend_id(this.lend_id)
                 .borrow_id(this.borrow_id)
                 .val(this.val)
-                .cat_id(this.cat_id)
+                .categories(this.categories)
                 .build();
     }
 }
