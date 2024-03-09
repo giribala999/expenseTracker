@@ -3,11 +3,13 @@ package com.app.expensetracker.service;
 import com.app.expensetracker.dao.TransactionRepository;
 import com.app.expensetracker.dto.TransactionCreateRequest;
 import com.app.expensetracker.entity.Transaction;
+import com.app.expensetracker.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,6 +36,11 @@ public class TransactionServiceImpl implements TransactionService {
             return ResponseEntity.ok(transaction);
         }
 
+    }
+    @Override
+    @Transactional
+    public List<Transaction> getAllTransactions(){
+        return transactionRepository.findAll();
     }
 
     @Override

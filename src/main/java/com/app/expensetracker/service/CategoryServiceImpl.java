@@ -2,11 +2,13 @@ package com.app.expensetracker.service;
 import com.app.expensetracker.dao.CategoryRepository;
 import com.app.expensetracker.dto.CategoryCreateRequest;
 import com.app.expensetracker.entity.Category;
+import com.app.expensetracker.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,6 +36,12 @@ public class CategoryServiceImpl implements CategoryService{
             return ResponseEntity.ok(category);
         }
 
+    }
+
+    @Override
+    @Transactional
+    public List<Category> getAllCategories(){
+        return categoryRepository.findAll();
     }
 
     @Override

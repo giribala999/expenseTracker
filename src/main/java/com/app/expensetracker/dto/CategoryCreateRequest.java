@@ -18,14 +18,14 @@ public class CategoryCreateRequest {
     @NotBlank
     private String categoryName;
 
-    @Size(min=2,message="Enter 2 users only")
-    private List<User> users;
+//    @Size(min=2,message="Enter 2 users only")
+//    private List<User> users;
 
     public Category to(){
         return Category.builder()
                 .cat_id(UUID.randomUUID().toString())
                 .categoryName(this.categoryName)
-                .users(this.users)
+//                .users(this.users)
                 .build();
     }
 }

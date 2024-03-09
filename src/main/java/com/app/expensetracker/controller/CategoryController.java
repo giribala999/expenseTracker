@@ -1,6 +1,7 @@
 package com.app.expensetracker.controller;
 import com.app.expensetracker.dto.CategoryCreateRequest;
 import com.app.expensetracker.entity.Category;
+import com.app.expensetracker.entity.User;
 import com.app.expensetracker.service.CategoryService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class CategoryController {
     @GetMapping("/get/{catId}")
     public ResponseEntity<Optional<Category>> getCategoryById(@PathVariable String catId) {
         return categoryService.getCategoryById(catId);
+    }
+
+    @GetMapping("/get")
+    public List<Category> getAllCategories() {
+         return categoryService.getAllCategories();
     }
     @PostMapping("/delete/{catId}")
     public ResponseEntity<Optional<Category>> deleteCategoryById(@PathVariable String catId) {

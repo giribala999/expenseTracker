@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -26,6 +27,17 @@ public class UserController {
     public ResponseEntity<Optional<User>> getUserById(@PathVariable String user_id) {
         return userService.getUserById(user_id);
     }
+
+//    @GetMapping("/get/categories/{user_id}")
+//    public ResponseEntity<Optional<User>> getUserById(@PathVariable String user_id) {
+//        return userService.getUserById(user_id);
+//    }
+
+    @GetMapping("/get")
+    public List<User> getAllUsers() {
+        return userService.getAllUsers();
+    }
+
     @PostMapping("/delete/{user_id}")
     public ResponseEntity<Optional<User>> deleteUserById(@PathVariable String user_id) {
         return userService.deleteUserById(user_id);

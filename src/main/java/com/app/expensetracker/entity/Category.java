@@ -25,9 +25,8 @@ public class Category {
     @Column(name="categoryName")
     private String categoryName;
 
-    @Column(name="users")
     @ManyToMany(mappedBy = "categories")
-     private List<User> users;
+     private List<User> cat_users;
 
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Transaction> transactions;

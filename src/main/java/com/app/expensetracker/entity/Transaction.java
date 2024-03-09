@@ -26,30 +26,35 @@ public class Transaction {
     @Column(name="trans_id",nullable = false)
     String trans_id;
 
-    @Column(name="item")
-    String item;
+    @Column(name="Transaction name")
+    String transaction_name;
 
-    @Column(name="lend_id")
-    String lend_id;
+    @Column(name="Lender")
+    String lender;
 
-    @Column(name="borrow_id")
-    String borrow_id;
+    @Column(name="Borrower")
+    String borrower;
 
-    @Column(name="val")
-    double val;
+    @Column(name="Value")
+    double value;
 
-    @Column(name="categories")
-    String categories;
-
+    @Column(name="Creation Time")
     @CreationTimestamp
     private LocalDateTime dateCreated;
 
+    @Column(name="Last Updated")
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private  User user;
+    @Column(name="category_name")
+    String category_name;
+
+//    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private  User user;
+
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<User> trans_users;
 
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "cat_id")

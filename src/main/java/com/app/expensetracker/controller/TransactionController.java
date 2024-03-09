@@ -26,6 +26,11 @@ public class TransactionController {
     public ResponseEntity<Optional<Transaction>> getTransactionById(@PathVariable String trans_id) {
         return transactionService.getTransactionById(trans_id);
     }
+
+    @GetMapping("/get")
+    public List<Transaction> getAllTransactions() {
+        return transactionService.getAllTransactions();
+    }
     @PostMapping("/delete/{trans_id}")
     public ResponseEntity<Optional<Transaction>> deleteTransactionById(@PathVariable String trans_id) {
         return transactionService.deleteTransactionById(trans_id);

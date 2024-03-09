@@ -32,11 +32,14 @@ public class User {
     @Column(name="balance")
     private double balance;
 
+
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Category> categories;
 
+//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private List<Transaction> transactions;
 
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Transaction> transactions;
+    @ManyToMany(mappedBy = "trans_users")
+    private List<Transaction> user_transactions;
 
 }
