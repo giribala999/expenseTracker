@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface UserService {
 
-    User createUser(UserCreateRequest userCreateRequest);
+    User createUser(UserCreateRequest userCreateRequest) throws Exception;
     ResponseEntity<Optional<User>> getUserById(String user_id);
 
     List<User> getAllUsers();

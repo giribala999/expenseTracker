@@ -16,7 +16,7 @@ public class UserController {
     @Autowired
     private UserService userService;
     @PostMapping("/create")
-    public  User createUser(@RequestBody @Valid UserCreateRequest userCreateRequest){
+    public  User createUser(@RequestBody @Valid UserCreateRequest userCreateRequest) throws Exception {
         return userService.createUser(userCreateRequest);
     }
     @PutMapping("/update/{user_id}")

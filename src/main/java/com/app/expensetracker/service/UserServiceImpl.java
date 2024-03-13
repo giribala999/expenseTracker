@@ -18,9 +18,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User createUser(UserCreateRequest userCreateRequest){
+    public User createUser(UserCreateRequest userCreateRequest) throws Exception {
         User user = userCreateRequest.to();
-        return userRepository.save(user);
+        User local= this.userRepository.findByFirstName(user.getFirstName());
+        if(local!= null){
+            User local2= this.userRepository.findByLastName(user.getLastName());
+
+            if(local2 != null) {
+                System.out.println("User already present!!!");
+                throw new Exception("User already present!!!");
+            }
+            else{
+                return userRepository.save(user);
+            }
+        }
+
+        else{
+            return userRepository.save(user);
+        }
     }
 
     @Override
