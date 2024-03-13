@@ -19,8 +19,8 @@ public class Category {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name="cat_id",nullable = false)
-    private String cat_id;
+    @Column(name="Id",nullable = false)
+    private String id;
 
     @Column(name="categoryName")
     private String categoryName;

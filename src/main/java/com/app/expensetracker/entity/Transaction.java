@@ -23,8 +23,8 @@ public class Transaction {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name="trans_id",nullable = false)
-    String trans_id;
+    @Column(name="Id",nullable = false)
+    String id;
 
     @Column(name="Transaction name")
     String transaction_name;

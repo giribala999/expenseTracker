@@ -23,7 +23,7 @@ public class CategoryCreateRequest {
 
     public Category to(){
         return Category.builder()
-                .cat_id(UUID.randomUUID().toString())
+                .id(UUID.randomUUID().toString())
                 .categoryName(this.categoryName)
 //                .users(this.users)
                 .build();

@@ -21,7 +21,7 @@ public class UserCreateRequest {
 
     public User to(){
         return User.builder()
-                .user_id(UUID.randomUUID().toString())
+                .id(UUID.randomUUID().toString())
                 .firstName(this.firstName)
                 .lastName(this.lastName)
                 .build();

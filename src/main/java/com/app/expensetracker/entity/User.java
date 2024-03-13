@@ -20,8 +20,8 @@ public class User {
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
-    @Column(name="user_id",nullable = false)
-    private String user_id;
+    @Column(name="Id",nullable = false)
+    private String id;
 
     @Column(name="firstName")
     private String firstName;
@@ -29,8 +29,8 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
-    @Column(name="balance")
-    private double balance;
+//    @Column(name="balance")
+//    private double balance;
 
 
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

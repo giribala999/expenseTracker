@@ -27,7 +27,7 @@ public class TransactionCreateRequest {
 
     public Transaction to(){
         return Transaction.builder()
-                .trans_id(UUID.randomUUID().toString())
+                .id(UUID.randomUUID().toString())
                 .transaction_name(this.transaction_name)
                 .lender(this.lender)
                 .borrower(this.borrower)
