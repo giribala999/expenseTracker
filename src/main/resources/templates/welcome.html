@@ -1,6 +1,12 @@
 <!DOCTYPE html>
-<html xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="ISO-8859-1">
+    <title>Expense tracker</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
     <style>
         div {text-align: center;}
 
@@ -49,8 +55,6 @@
           background-color: white;
         }
     </style>
-    <meta charset="ISO-8859-1">
-    <title>welcome</title>
 </head>
 <body>
 
@@ -58,9 +62,7 @@
 
 <!--    <div class="container">-->
         <div class="center">
-            <form action="user.html">
-                <button class="button" >User</button>
-            </form>
+            <a th:href = "@{/user/user_list}" class="button">User</a>
         <button class="button">Category</button>
         <button class="button">Transaction</button>
         </div>
