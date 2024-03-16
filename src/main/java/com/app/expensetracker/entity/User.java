@@ -29,11 +29,8 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
-    @Column(name="balance")
-    private double balance;
 
-
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "cat_users")
     private List<Category> categories;
 
 //    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

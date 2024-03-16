@@ -29,11 +29,22 @@ public class Transaction {
     @Column(name="Transaction name")
     String transaction_name;
 
-    @Column(name="Lender")
-    String lender;
+//    @Column(name="Lender")
+//    User lender;
+//
+//    @Column(name="Borrower")
+//    User borrower;
+    @Column(name="lenderFirstName")
+    String lenderFirstName;
 
-    @Column(name="Borrower")
-    String borrower;
+    @Column(name="lenderLastName")
+    String lenderLastName;
+
+    @Column(name="borrowerFirstName")
+    String borrowerFirstName;
+
+    @Column(name="borrowerLastName")
+    String borrowerLastName;
 
     @Column(name="Value")
     double value;
@@ -46,8 +57,8 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @Column(name="category_name")
-    String category_name;
+    @Column(name="categoryName")
+    String categoryName;
 
 //    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    @JoinColumn(name = "user_id")

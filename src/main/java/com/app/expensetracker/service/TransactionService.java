@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public interface TransactionService {
 
-    Transaction createTransaction(TransactionCreateRequest transactionCreateRequest);
+    Transaction createTransaction(TransactionCreateRequest transactionCreateRequest) throws Exception;
     ResponseEntity<Optional<Transaction>> getTransactionById(String transaction_id);
     List<Transaction> getAllTransactions();
     Transaction updateTransaction(String transId, TransactionCreateRequest transactionCreateRequest);

@@ -15,7 +15,7 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
     @PostMapping("/create")
-    public  Transaction createTransaction(@RequestBody @Valid TransactionCreateRequest transactionCreateRequest){
+    public  Transaction createTransaction(@RequestBody @Valid TransactionCreateRequest transactionCreateRequest) throws Exception {
         return transactionService.createTransaction(transactionCreateRequest);
     }
     @PutMapping("/update/{trans_id}")
