@@ -32,15 +32,23 @@ public class TransactionServiceImpl implements TransactionService {
         Transaction transaction = transactionCreateRequest.to();
 
         List<User> cat_users=new ArrayList<>();
+        List<User> trans_users=new ArrayList<>();
 
         User borrower=this.userRepository.findByFirstNameAndLastName(transaction.getBorrowerFirstName(), transaction.getBorrowerLastName());
         User lender=this.userRepository.findByFirstNameAndLastName(transaction.getLenderFirstName(), transaction.getLenderLastName());
 
-        cat_users.add(borrower);
+        cat_users.add(borrower); //stores users in category
         cat_users.add(lender);
 
+       trans_users.add(borrower); //store users in transaction
+       trans_users.add(lender);
+
         Category category=this.categoryRepository.findByCategoryName(transaction.getCategoryName());
+        transaction.setCategory(category); //to store transaction in category
+
         category.setCat_users(cat_users);
+
+       transaction.setTrans_users(trans_users);
 
         return transactionRepository.save(transaction);
     }

@@ -1,5 +1,7 @@
 package com.app.expensetracker.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
@@ -25,9 +27,11 @@ public class Category {
     @Column(name="categoryName")
     private String categoryName;
 
+    @JsonManagedReference // to prevent infinite json recursion
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<User> cat_users;
 
+    @JsonBackReference
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Transaction> transactions;
 }
