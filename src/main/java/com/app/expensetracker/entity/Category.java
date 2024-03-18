@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -29,9 +30,9 @@ public class Category {
 
     @JsonManagedReference // to prevent infinite json recursion
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<User> cat_users;
+    private List<User> cat_users=new ArrayList<>();
 
     @JsonBackReference
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Transaction> transactions;
+    private List<Transaction> transactions=new ArrayList<>();
 }

@@ -9,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -51,8 +52,7 @@ public class Transaction {
     double value;
 
     @Column(name="Creation Time")
-
-
+    @CreationTimestamp
     private LocalDateTime dateCreated;
 
     @Column(name="Last Updated")
@@ -68,7 +68,7 @@ public class Transaction {
 
     @JsonManagedReference
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<User> trans_users;
+    private List<User> trans_users=new ArrayList<>();
 
     @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)

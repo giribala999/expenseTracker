@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -39,6 +40,10 @@ public class User {
 
     @JsonBackReference
     @ManyToMany(mappedBy = "trans_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<Transaction> user_transactions;
+    private List<Transaction> user_transactions=new ArrayList<>();
+
+    @JsonBackReference
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<UserResponse> userResponse=new ArrayList<>();
 
 }
