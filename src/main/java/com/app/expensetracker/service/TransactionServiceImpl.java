@@ -81,15 +81,34 @@ public class TransactionServiceImpl implements TransactionService {
 
         transaction.setCategory(category); //to store transaction in category
 
+//        UserResponse local1=this.userResponseRepository.findByUser(borrower);
+//        UserResponse local2=this.userResponseRepository.findByCategoryName(transaction.getCategoryName());
+
+        UserResponse local1=this.userResponseRepository.findByUserAndCategoryName(borrower, transaction.getCategoryName());
+        UserResponse local2=this.userResponseRepository.findByUserAndCategoryName(lender,transaction.getCategoryName());
 
         UserResponse b_userResponse = new UserResponse();
+        if(local1==null) {
+            b_userResponse.setBalance(b);
+        }
+        else{
+            b=b+ local1.getBalance();
+            b_userResponse.setBalance(b);
+        }
         b_userResponse.setUser(borrower);
         b_userResponse.setCategoryName(category.getCategoryName());
-        b_userResponse.setBalance(b);
         b_userResponse.setTrans_list(b_trans_list);
         userResponseRepository.save(b_userResponse);
 
+
         UserResponse l_userResponse = new UserResponse();
+        if(local2==null) {
+            l_userResponse.setBalance(l);
+        }
+        else{
+            l=l+local2.getBalance();
+            l_userResponse.setBalance(l);
+        }
         l_userResponse.setUser(lender);
         l_userResponse.setCategoryName(category.getCategoryName());
         l_userResponse.setBalance(l);
