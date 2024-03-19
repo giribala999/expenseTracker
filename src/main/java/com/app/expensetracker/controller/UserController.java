@@ -39,20 +39,35 @@ public class UserController {
         model.addAttribute("message", "You have registered successfully.");
         return "redirect:/user/user_list";
     }
-    @PutMapping("/update/{user_id}")
-    public  String updateCategory(@PathVariable("user_id") String user_id, @RequestBody @Valid UserCreateRequest userCreateRequest) throws Exception {
-       userService.createUser(userCreateRequest);
-        return "user_create";
+
+    @GetMapping("/update_form/{user_id}")
+    public String editUserForm(@PathVariable String user_id, Model model) {
+        model.addAttribute("user", userService.getUserById(user_id));
+        return "user_edit";
+    }
+    @PostMapping("/update/{user_id}")
+    public  String updateCategory(@PathVariable("user_id") String user_id, @ModelAttribute("user")User user,Model model) throws Exception {
+        // get student from database by id
+        User existingUser = userService.getUserById(user_id);
+        existingUser.setId(user_id);
+        existingUser.setFirstName(user.getFirstName());
+        existingUser.setLastName(user.getLastName());
+
+        // save updated student object
+        userService.updateUser(existingUser);
+        model.addAttribute("message", "You have registered successfully.");
+        return "redirect:/user/user_list";
     }
     @GetMapping("/get/{user_id}")
-    public ResponseEntity<Optional<User>> getUserById(@PathVariable String user_id) {
-        return userService.getUserById(user_id);
+    public String getUserById(@PathVariable String user_id, Model model) {
+        model.addAttribute("user", userService.getUserById(user_id));
+        return "user_details";
     }
 
-    @PostMapping("/delete/{user_id}")
+    @GetMapping("/delete/{user_id}")
     public String deleteUserById(@PathVariable String user_id) {
         userService.deleteUserById(user_id);
-        return "redirect:/user";
+        return "redirect:/user/user_list";
     }
 
 }

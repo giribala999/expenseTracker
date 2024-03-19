@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Edit User</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Update Existing User </h1>
+            <div class = "card-body">
+                <form th:action="@{/user/update/{user_id} (user_id=${user.id})}" th:method="post" th:object="${user}">
+                    <div class ="form-group">
+                        <label> First Name </label>
+                        <input
+                                type = "text"
+                                name = "firstName"
+                                th:field = "*{firstName}"
+                                class = "form-control"
+                                placeholder="Enter User First Name"
+                        />
+                    </div>
+
+                    <div class ="form-group">
+                        <label> Last Name </label>
+                        <input
+                                type = "text"
+                                name = "lastName"
+                                th:field = "*{lastName}"
+                                class = "form-control"
+                                placeholder="Enter User Last Name"
+                        />
+                    </div>
+
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">Submit</button>
+                        <h1 th:text="${message}">message</h1>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+
+
+</body>
+</html>

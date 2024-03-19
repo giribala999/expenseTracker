@@ -10,10 +10,10 @@ import java.util.Optional;
 public interface UserService {
 
     User createUser(UserCreateRequest userCreateRequest) throws Exception;
-    ResponseEntity<Optional<User>> getUserById(String user_id);
+    User getUserById(String user_id);
 
     List<User> getAllUsers();
-    User updateUser(String userId, UserCreateRequest userCreateRequest);
+    User updateUser(User user);
     ResponseEntity<Optional<User>> deleteUserById(String user_id);
 
 }

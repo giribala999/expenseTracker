@@ -40,16 +40,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public ResponseEntity<Optional<User>> getUserById(String user_id){
-
-        Optional<User> user =  userRepository.findById(user_id);
-        if(user == null){
-            return ResponseEntity.notFound().build();
-        }
-        else{
-            return ResponseEntity.ok(user);
-        }
-
+    public User getUserById(String user_id){
+        return userRepository.findById(user_id).get();
     }
 
     @Override
@@ -61,8 +53,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User updateUser(String userId, UserCreateRequest userCreateRequest){
-        User user = userCreateRequest.to();
+    public User updateUser(User user){
+       // User user = userCreateRequest.to();
         return userRepository.save(user);
     }
 
