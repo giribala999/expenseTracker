@@ -1,15 +1,12 @@
 package com.app.expensetracker.controller;
 
+import com.app.expensetracker.dto.TransactionCreateRequest;
 import com.app.expensetracker.entity.Transaction;
-import com.app.expensetracker.service.CatTransResponse;
 import com.app.expensetracker.service.TransactionService;
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
 import java.util.*;
 
 @RestController
@@ -18,20 +15,25 @@ public class TransactionController {
     @Autowired
     private TransactionService transactionService;
     @PostMapping("/create")
-    public  void createTransaction(@RequestBody Transaction transaction){
-        transactionService.saveTransaction(transaction);
+    public  Transaction createTransaction(@RequestBody @Valid TransactionCreateRequest transactionCreateRequest) throws Exception {
+        return transactionService.createTransaction(transactionCreateRequest);
     }
-    @PostMapping("/update")
-    public  void updateTransaction(@RequestBody Transaction transaction){
-        transactionService.updateTransaction(transaction);
+    @PutMapping("/update/{trans_id}")
+    public Transaction updateTransaction(@PathVariable("trans_id") String trans_id, @RequestBody @Valid TransactionCreateRequest transactionCreateRequest){
+        return transactionService.updateTransaction(trans_id, transactionCreateRequest);
     }
-    @GetMapping("/get/{id}")
-    public ResponseEntity<Optional<Transaction>> getTransactionById(@PathVariable String transaction_id) {
-        return transactionService.getTransactionById(transaction_id);
+    @GetMapping("/get/{trans_id}")
+    public ResponseEntity<Optional<Transaction>> getTransactionById(@PathVariable String trans_id) {
+        return transactionService.getTransactionById(trans_id);
     }
-    @PostMapping("/delete/{id}")
-    public ResponseEntity<Optional<Transaction>> deleteTransactionById(@PathVariable String transaction_id) {
-        return transactionService.deleteTransactionById(transaction_id);
+
+    @GetMapping("/get")
+    public List<Transaction> getAllTransactions() {
+        return transactionService.getAllTransactions();
+    }
+    @PostMapping("/delete/{trans_id}")
+    public ResponseEntity<Optional<Transaction>> deleteTransactionById(@PathVariable String trans_id) {
+        return transactionService.deleteTransactionById(trans_id);
     }
 
 

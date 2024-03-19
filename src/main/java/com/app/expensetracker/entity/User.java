@@ -1,8 +1,11 @@
 package com.app.expensetracker.entity;
 
-import com.app.expensetracker.service.CatTransResponse;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
+
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -12,11 +15,13 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="user_id",nullable = false)
     private String user_id;
 
@@ -26,22 +31,19 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
-    @Column(name="cat_id")
-    private String cat_id;
+    @JsonBackReference
+    @ManyToMany(mappedBy = "cat_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Category> categories;
 
-    @Column(name="trans_list")
-    private List<Integer> trans_list;
+//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    private List<Transaction> transactions;
 
-    @Column(name="balance")
-    private double balance;
+    @JsonBackReference
+    @ManyToMany(mappedBy = "trans_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Transaction> user_transactions=new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "cat_id")
-    private  Category category;
+    @JsonBackReference
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<UserResponse> userResponse=new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "trans_id")
-    private  Transaction transaction;
-
-    }
-
+}

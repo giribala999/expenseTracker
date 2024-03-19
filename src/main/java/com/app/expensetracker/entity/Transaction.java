@@ -1,12 +1,15 @@
 package com.app.expensetracker.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,39 +18,59 @@ import java.util.List;
 @AllArgsConstructor
 @Getter
 @Setter
+@Builder
 @ToString
 
 public class Transaction {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="trans_id",nullable = false)
     String trans_id;
 
-    @Column(name="item")
-    String item;
+    @Column(name="Transaction name")
+    String transaction_name;
 
-    @Column(name="lend_id")
-    String lend_id;
+//    @Column(name="Lender")
+//    User lender;
+//
+//    @Column(name="Borrower")
+//    User borrower;
+    @Column(name="lenderFirstName")
+    String lenderFirstName;
 
-    @Column(name="borrow_id")
-    String borrow_id;
+    @Column(name="lenderLastName")
+    String lenderLastName;
 
-    @Column(name="val")
-    double val;
+    @Column(name="borrowerFirstName")
+    String borrowerFirstName;
 
-    @Column(name="cat_id")
-    String cat_id;
+    @Column(name="borrowerLastName")
+    String borrowerLastName;
 
+    @Column(name="Value")
+    double value;
+
+    @Column(name="Creation Time")
     @CreationTimestamp
     private LocalDateTime dateCreated;
 
+    @Column(name="Last Updated")
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private  User user;
+    @Column(name="categoryName")
+    String categoryName;
 
+//    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id")
+//    private  User user;
+
+    @JsonManagedReference
+    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<User> trans_users=new ArrayList<>();
+
+    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "cat_id")
     private  Category category;
