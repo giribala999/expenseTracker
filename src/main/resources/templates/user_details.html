@@ -9,7 +9,20 @@
           crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
 
+    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User</a>
+            <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
+            <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
 <div class ="container">
     <div class = "row">
         <h1> User Details </h1>
@@ -22,19 +35,17 @@
             <th> User Id</th>
             <th> First Name</th>
             <th> Last Name</th>
-            <th> Categories</th>
 
         </tr>
         </thead>
 
         <tbody>
-        <tr th:each = "user: ${user_list}">
+
             <td th:text = "${user.id}"></td>
             <td th:text = "${user.firstName}"></td>
             <td th:text = "${user.lastName}"></td>
-            <td th:text = "${user.categories}"></td>
 
-        </tr>
+
         </tbody>
 
     </table>

@@ -25,7 +25,6 @@ public class CategoryCreateRequest {
         return Category.builder()
                 .id(UUID.randomUUID().toString())
                 .categoryName(this.categoryName)
-//                .users(this.users)
                 .build();
     }
 }

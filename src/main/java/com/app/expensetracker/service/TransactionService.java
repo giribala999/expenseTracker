@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public interface TransactionService {
 
-    Transaction createTransaction(TransactionCreateRequest transactionCreateRequest);
-    ResponseEntity<Optional<Transaction>> getTransactionById(String transaction_id);
+    Transaction createTransaction(TransactionCreateRequest transactionCreateRequest) throws Exception;
+    Transaction getTransactionById(String transaction_id);
     List<Transaction> getAllTransactions();
-    Transaction updateTransaction(String transId, TransactionCreateRequest transactionCreateRequest);
+    Transaction updateTransaction(Transaction transaction);
     ResponseEntity<Optional<Transaction>> deleteTransactionById(String transaction_id);
 }

@@ -1,6 +1,7 @@
 package com.app.expensetracker.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,6 +9,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -27,16 +29,22 @@ public class Transaction {
     String id;
 
     @Column(name="Transaction name")
-    String transaction_name;
+    String transactionName;
 
-    @Column(name="Lender")
-    String lender;
+    @Column(name="lenderFirstName")
+    String lenderFirstName;
 
-    @Column(name="Borrower")
-    String borrower;
+    @Column(name="lenderLastName")
+    String lenderLastName;
 
-    @Column(name="Value")
-    double value;
+    @Column(name="borrowerFirstName")
+    String borrowerFirstName;
+
+    @Column(name="borrowerLastName")
+    String borrowerLastName;
+
+    @Column(name="Price")
+    double price;
 
     @Column(name="Creation Time")
     @CreationTimestamp
@@ -46,16 +54,18 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
-    @Column(name="category_name")
-    String category_name;
+    @Column(name="categoryName")
+    String categoryName;
 
 //    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    @JoinColumn(name = "user_id")
 //    private  User user;
 
+    @JsonManagedReference
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<User> trans_users;
+    private List<User> trans_users=new ArrayList<>();
 
+    @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "cat_id")
     private  Category category;

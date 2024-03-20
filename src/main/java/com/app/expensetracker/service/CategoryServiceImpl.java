@@ -18,24 +18,24 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     @Transactional
-    public Category createCategory(CategoryCreateRequest categoryCreateRequest){
+    public Category createCategory(CategoryCreateRequest categoryCreateRequest) throws Exception {
         Category category = categoryCreateRequest.to();
-        return categoryRepository.save(category);
+        Category local= this.categoryRepository.findByCategoryName(category.getCategoryName());
+
+        if(local!= null) {
+            System.out.println("Category already present!!!");
+            throw new Exception("Category already present!!!");
+        }
+        else{
+            return categoryRepository.save(category);
+        }
     }
 
 
     @Override
     @Transactional
-    public ResponseEntity<Optional<Category>> getCategoryById(String category_id){
-
-        Optional<Category> category =  categoryRepository.findById(category_id);
-        if(category == null){
-            return ResponseEntity.notFound().build();
-        }
-        else{
-            return ResponseEntity.ok(category);
-        }
-
+    public Category getCategoryById(String category_id){
+        return categoryRepository.findById(category_id).get();
     }
 
     @Override
@@ -46,8 +46,8 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     @Transactional
-    public Category updateCategory(String categoryId, CategoryCreateRequest categoryCreateRequest){
-        Category category = categoryCreateRequest.to();
+    public Category updateCategory(Category category){
+       // Category category = categoryCreateRequest.to();
         return categoryRepository.save(category);
     }
 

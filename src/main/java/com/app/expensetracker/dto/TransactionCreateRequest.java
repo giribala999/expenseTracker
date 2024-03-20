@@ -13,26 +13,29 @@ import java.util.UUID;
 @ToString
 public class TransactionCreateRequest {
     @NotBlank
-    private String transaction_name;
+    private String transactionName;
 
-    private String lender;
-
-    private String borrower;
+    private String lenderFirstName;
+    private String lenderLastName;
+    private String borrowerFirstName;
+    private String borrowerLastName;
 
     @NonNull
-    private double value;
+    private double price;
 
     @NotBlank
-    private String category_name;
+    private String categoryName;
 
     public Transaction to(){
         return Transaction.builder()
                 .id(UUID.randomUUID().toString())
-                .transaction_name(this.transaction_name)
-                .lender(this.lender)
-                .borrower(this.borrower)
-                .value(this.value)
-                .category_name(this.category_name)
+                .transactionName(this.transactionName)
+                .lenderFirstName(this.lenderFirstName)
+                .lenderLastName(this.lenderLastName)
+                .borrowerFirstName(this.borrowerFirstName)
+                .borrowerLastName(this.borrowerLastName)
+                .price(this.price)
+                .categoryName(this.categoryName)
                 .build();
     }
 }

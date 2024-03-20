@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="ISO-8859-1">
+    <title>Add Category</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
+            <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
+            <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
+        </div>
+    </div>
+</nav>
+
+<br>
+<br>
+<div class = "container">
+    <div class = "row">
+        <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <h1 class = "text-center"> Create New Category </h1>
+            <div class = "card-body">
+                <form th:action="@{/category/create}" th:method="post" th:object="${category}">
+                    <div class ="form-group">
+                        <label> Category Name </label>
+                        <input
+                                type = "text"
+                                name = "categoryName"
+                                th:field = "*{categoryName}"
+                                class = "form-control"
+                                placeholder="Enter CategoryName"
+                        />
+                    </div>
+
+
+                    <div class = "box-footer">
+                        <button type="submit" class = "btn btn-primary">Submit</button>
+                        <h1 th:text="${message}">message</h1>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<br/>
+
+
 
 </body>
 </html>

@@ -10,9 +10,9 @@ import java.util.Optional;
 
 public interface CategoryService {
 
-    Category createCategory(CategoryCreateRequest categoryCreateRequest);
-    ResponseEntity<Optional<Category>> getCategoryById(String category_id);
+    Category createCategory(CategoryCreateRequest categoryCreateRequest) throws Exception;
+    Category getCategoryById(String category_id);
     List<Category> getAllCategories();
-    Category updateCategory(String categoryId, CategoryCreateRequest categoryCreateRequest);
+    Category updateCategory(Category category);
     ResponseEntity<Optional<Category>> deleteCategoryById(String category_id);
 }

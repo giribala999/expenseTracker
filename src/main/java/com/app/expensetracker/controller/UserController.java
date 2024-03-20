@@ -21,13 +21,12 @@ public class UserController {
     public String getAllUsers(Model model) {
        model.addAttribute("user_list", userService.getAllUsers());
         return "user";
-
     }
 
     @GetMapping("/create_form")
     public String createUserForm(Model model) {
 
-        // create student object to hold student form data
+        // create user object to hold user form data
         User user = new User();
         model.addAttribute("user", user);
         return "user_create";
@@ -47,13 +46,13 @@ public class UserController {
     }
     @PostMapping("/update/{user_id}")
     public  String updateCategory(@PathVariable("user_id") String user_id, @ModelAttribute("user")User user,Model model) throws Exception {
-        // get student from database by id
+        // get user from database by id
         User existingUser = userService.getUserById(user_id);
         existingUser.setId(user_id);
         existingUser.setFirstName(user.getFirstName());
         existingUser.setLastName(user.getLastName());
 
-        // save updated student object
+        // save updated user object
         userService.updateUser(existingUser);
         model.addAttribute("message", "You have registered successfully.");
         return "redirect:/user/user_list";

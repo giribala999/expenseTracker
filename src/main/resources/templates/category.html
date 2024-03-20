@@ -1,10 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="ISO-8859-1">
+    <title>Category</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
 
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
+            <a class="nav-item nav-link active" th:href= "@{/category/category_list}">Category<span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+<div class ="container">
+    <div class = "row">
+        <h1> Category List </h1>
+    </div>
+
+    <div class = "row">
+        <div class = "col-lg-3">
+
+            <a th:href = "@{/category/create_form}" class = "btn btn-primary btn-sm mb-3">+ Add Category</a>
+        </div>
+    </div>
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Category Id</th>
+            <th> Category Name</th>
+            <th> Actions </th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each = "category: ${category_list}">
+            <td th:text = "${category.id}"></td>
+            <td th:text = "${category.categoryName}"></td>
+
+
+            <td>
+                <a th:href = "@{/category/get/{catId} (catId=${category.id})}"
+                   class = "btn btn-info">More Details</a>
+                <a th:href = "@{/category/update_form/{catId} (catId=${category.id})}"
+                   class = "btn btn-warning">Update</a>
+
+                <a th:href = "@{/category/delete/{catId} (catId=${category.id})}"
+                   class = "btn btn-danger">Delete</a>
+
+            </td>
+        </tr>
+        </tbody>
+
+    </table>
+
+</div>
 </body>
 </html>

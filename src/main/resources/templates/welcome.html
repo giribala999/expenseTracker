@@ -42,9 +42,10 @@
           text-decoration: none;
           font-size: 150%;
           cursor: pointer;
-          width: 100%;
+          width: 400%;
 
         }
+
       .button:hover {
           background-color: turquoise;
           color: black;
@@ -62,9 +63,14 @@
 
 <!--    <div class="container">-->
         <div class="center">
+            <div class = "row">
+
             <a th:href = "@{/user/user_list}" class="button">User</a>
-        <button class="button">Category</button>
-        <button class="button">Transaction</button>
+            <a th:href = "@{/category/category_list}" class="button">Category</a>
+            <a th:href = "@{/transaction/transaction_list}" class="button">Transaction</a>
+<!--        <button class="button">Transaction</button>-->
+
+            </div>
         </div>
 <!--    </div>-->
 </body>

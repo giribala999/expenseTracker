@@ -10,6 +10,21 @@
 </head>
 <body>
 
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+
+    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" th:href= "@{/user/user_list}">User<span class="sr-only">(current)</span> </a>
+            <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
+            <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
+        </div>
+    </div>
+</nav>
+<br>
+<br>
+
 <div class ="container">
     <div class = "row">
         <h1> User List </h1>
