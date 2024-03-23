@@ -57,10 +57,6 @@ public class Transaction {
     @Column(name="categoryName")
     String categoryName;
 
-//    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(name = "user_id")
-//    private  User user;
-
     @JsonManagedReference
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<User> trans_users=new ArrayList<>();

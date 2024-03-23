@@ -35,9 +35,6 @@ public class User {
     @ManyToMany(mappedBy = "cat_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Category> categories;
 
-//    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    private List<Transaction> transactions;
-
     @JsonBackReference
     @ManyToMany(mappedBy = "trans_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Transaction> user_transactions=new ArrayList<>();

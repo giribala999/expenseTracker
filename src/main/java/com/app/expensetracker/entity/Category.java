@@ -30,7 +30,7 @@ public class Category {
 
     @JsonManagedReference // to prevent infinite json recursion
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    private List<User> cat_users=new ArrayList<>();
+    private List<User> cat_users;
 
     @JsonBackReference
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)

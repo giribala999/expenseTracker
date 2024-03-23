@@ -41,25 +41,23 @@
         <tr>
             <th> Category Id</th>
             <th> Category Name</th>
-<!--            <th> Category Users</th>-->
-
+            <th> Category Users</th>
         </tr>
         </thead>
 
         <tbody>
-
             <td th:text = "${category.id}"></td>
             <td th:text = "${category.categoryName}"></td>
-<!--            <td th:text = "${category.cat_users}"></td>-->
-<!--            <td>-->
-<!--                <span th:each="cat_users,iterStat : ${category.cat_users}">-->
-
-<!--                </span>-->
-<!--            </td>-->
+<!--            <td th:text ="${category.cat_users.id}"></td>-->
         </tbody>
-
     </table>
 
 </div>
 </body>
 </html>
+
+<!--            <td>-->
+<!--                <span th:each="cat_users,iterStat : ${category.cat_users}">-->
+
+<!--                </span>-->
+<!--            </td>-->
