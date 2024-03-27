@@ -9,13 +9,13 @@
           crossorigin="anonymous">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-
-    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
-
+    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User</a>
+            <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
             <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
             <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
         </div>
@@ -30,11 +30,29 @@
     </div>
 
 
-    <table class = "table table-striped table-bordered">
-        <thead class = "table-dark">
+
+
+    <table class = "table align-middle">
+        <thead class = "table-success" >
         <tr>
             <th> Transaction Id</th>
             <th> Transaction Name</th>
+        </tr>
+        </thead>
+
+        <tbody class = "table-success">
+            <td th:text = "${transaction.id}"></td>
+            <td th:text = "${transaction.transactionName}"></td>
+
+        </tbody>
+    </table>
+
+
+
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Category Name </th>
             <th> Lender First Name</th>
             <th> Lender Last Name</th>
             <th> Borrower First Name</th>
@@ -42,27 +60,18 @@
             <th> Price (in rupees)</th>
             <th> Creation Time</th>
             <th> Last Updated</th>
-            <th> Category Name </th>
-
-
         </tr>
         </thead>
 
         <tbody>
-
-        <td th:text = "${transaction.id}"></td>
-        <td th:text = "${transaction.transactionName}"></td>
-        <td th:text = "${transaction.lenderFirstName}"></td>
-        <td th:text = "${transaction.lenderLastName}"></td>
-        <td th:text = "${transaction.borrowerFirstName}"></td>
-        <td th:text = "${transaction.borrowerLastName}"></td>
-        <td th:text = "${transaction.price}"></td>
-        <td th:text = "${transaction.dateCreated}"></td>
-        <td th:text = "${transaction.lastUpdated}"></td>
-        <td th:text = "${transaction.categoryName}"></td>
-
-
-
+            <td th:text = "${transaction.categoryName}"></td>
+            <td th:text = "${transaction.lenderFirstName}"></td>
+            <td th:text = "${transaction.lenderLastName}"></td>
+            <td th:text = "${transaction.borrowerFirstName}"></td>
+            <td th:text = "${transaction.borrowerLastName}"></td>
+            <td th:text = "${transaction.price}"></td>
+            <td th:text = "${transaction.dateCreated}"></td>
+            <td th:text = "${transaction.lastUpdated}"></td>
         </tbody>
 
     </table>

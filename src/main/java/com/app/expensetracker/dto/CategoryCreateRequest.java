@@ -18,9 +18,6 @@ public class CategoryCreateRequest {
     @NotBlank
     private String categoryName;
 
-//    @Size(min=2,message="Enter 2 users only")
-//    private List<User> users;
-
     public Category to(){
         return Category.builder()
                 .id(UUID.randomUUID().toString())

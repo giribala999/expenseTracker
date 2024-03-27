@@ -9,18 +9,19 @@
           crossorigin="anonymous">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-
-    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
-
+    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
-            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User</a>
+            <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+            <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
             <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
             <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
         </div>
     </div>
 </nav>
+
 <br>
 <br>
 <div class ="container">
@@ -29,25 +30,42 @@
     </div>
 
 
-    <table class = "table table-striped table-bordered">
-        <thead class = "table-dark">
+    <table class = "table align-middle">
+        <thead class = "table-success" >
         <tr>
             <th> User Id</th>
             <th> First Name</th>
             <th> Last Name</th>
-            <th> Categories</th>
+        </tr>
+        </thead>
+
+        <tbody class = "table-success">
+            <td th:text = "${user.id}"></td>
+            <td th:text = "${user.firstName}"></td>
+            <td th:text = "${user.lastName}"></td>
+
+        </tbody>
+    </table>
+
+
+    <table class = "table table-striped table-bordered">
+        <thead class = "table-dark">
+        <tr>
+            <th> Activity Id</th>
+            <th> Category Name</th>
+            <th>Transaction List</th>
+            <th> Balance</th>
         </tr>
         </thead>
 
         <tbody>
-
-            <td th:text = "${user.id}"></td>
-            <td th:text = "${user.firstName}"></td>
-            <td th:text = "${user.lastName}"></td>
-<!--            <td th:text = "${user.categories?.id}"></td>-->
-
+                <tr  th:each="userResponse : ${user.userResponse}">
+                            <td th:text = "${userResponse.response_id}"></td>
+                            <td th:text = "${userResponse.categoryName}"></td>
+                            <td th:text = "${userResponse.trans_list}"></td>
+                            <td th:text = "${userResponse.balance}"></td>
+                </tr>
         </tbody>
-
     </table>
 
 </div>

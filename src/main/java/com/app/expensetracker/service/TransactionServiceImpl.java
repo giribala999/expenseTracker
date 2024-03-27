@@ -41,42 +41,30 @@ public class TransactionServiceImpl implements TransactionService {
         }
 
         else{
-            List<Double> l_trans_list=new ArrayList<>();
-            List<Double> b_trans_list=new ArrayList<>();
-
-            double l,b;
-
-            l= -(transaction.getPrice());
-            l_trans_list.add(l);
-
-            b=transaction.getPrice();
-            b_trans_list.add(b);
-
             User lender=this.userRepository.findByFirstNameAndLastName(transaction.getLenderFirstName(), transaction.getLenderLastName());
             User borrower=this.userRepository.findByFirstNameAndLastName(transaction.getBorrowerFirstName(), transaction.getBorrowerLastName());
 
             Category category=this.categoryRepository.findByCategoryName(transaction.getCategoryName());
-//category.getCat_users()
+
             List<User> cat_users;
-            if(category.getCat_users()==null){
-                cat_users=new ArrayList<>();
-                cat_users.add(lender);
-                cat_users.add(borrower);
-
-            }
-            else {
-                cat_users = category.getCat_users();
-               // System.out.println("CATEGORY----------------USERS------------------"+cat_users);
-                if(cat_users.contains(lender)){}
-                else {
+                if(category.getCat_users()==null){
+                    cat_users=new ArrayList<>();
                     cat_users.add(lender);
+                    cat_users.add(borrower);
                 }
-
-                if(cat_users.contains(borrower)){}
                 else {
-                    cat_users.add(borrower); //stores users in category
+                    cat_users = category.getCat_users();
+
+                    if(cat_users.contains(lender)){}
+                    else {
+                        cat_users.add(lender);
+                    }
+
+                    if(cat_users.contains(borrower)){}
+                    else {
+                        cat_users.add(borrower); //stores users in category
+                    }
                 }
-            }
 
             List<User> trans_users = new ArrayList<>();
             trans_users.add(lender);
@@ -91,34 +79,60 @@ public class TransactionServiceImpl implements TransactionService {
             UserResponse local1=this.userResponseRepository.findByUserAndCategoryName(lender,transaction.getCategoryName());
             UserResponse local2=this.userResponseRepository.findByUserAndCategoryName(borrower, transaction.getCategoryName());
 
+            double l,b, bal1=0,bal2=0;
+            l= -(transaction.getPrice());
+            b=transaction.getPrice();
 
             UserResponse l_userResponse = new UserResponse();
+            List<Double> l_trans_list;
             if(local1==null) {
-                l_userResponse.setBalance(l);
+                bal1=l;
+                l_trans_list=new ArrayList<>();
             }
             else{
-                l=l+local1.getBalance();
-                l_userResponse.setBalance(l);
+                bal1=l+local1.getBalance();
+                l_trans_list=local1.getTrans_list();
+                userResponseRepository.deleteById(local1.getResponse_id());//not working
             }
             l_userResponse.setUser(lender);
             l_userResponse.setCategoryName(category.getCategoryName());
-            l_userResponse.setBalance(l);
+            l_userResponse.setBalance(bal1);
+            l_trans_list.add(l);
             l_userResponse.setTrans_list(l_trans_list);
+
+//            if(local1!=null) {
+//                System.out.println("ACTIVITY ID : "+ local1.getResponse_id());
+//                userResponseRepository.deleteById(local1.getResponse_id());
+//                System.out.println("SUCCESSFUL LOCAL 1 DELETED");
+//            }
             userResponseRepository.save(l_userResponse);
 
 
+
             UserResponse b_userResponse = new UserResponse();
+            List<Double> b_trans_list;
             if(local2==null) {
-                b_userResponse.setBalance(b);
+                bal2=b;
+                b_trans_list=new ArrayList<>();
             }
             else{
-                b=b+ local2.getBalance();
-                b_userResponse.setBalance(b);
+                bal2=b+ local2.getBalance();
+                b_trans_list=local2.getTrans_list();
+                userResponseRepository.deleteById(local2.getResponse_id());
             }
             b_userResponse.setUser(borrower);
             b_userResponse.setCategoryName(category.getCategoryName());
+            b_userResponse.setBalance(bal2);
+            b_trans_list.add(b);
             b_userResponse.setTrans_list(b_trans_list);
+
+//            if(local2!=null) {
+//                System.out.println("ACTIVITY ID : "+ local2.getResponse_id());
+//                userResponseRepository.deleteById(local2.getResponse_id());
+//                System.out.println("SUCCESSFUL LOCAL 2 DELETED");
+//            }
             userResponseRepository.save(b_userResponse);
+
 
             return transactionRepository.save(transaction);
         }

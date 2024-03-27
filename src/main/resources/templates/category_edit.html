@@ -9,18 +9,12 @@
           crossorigin="anonymous">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-
-    <a class="nav-item nav-link" th:href= "@{/}">Home</a>
-
-    <!-- Toggler/collapsibe Button -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
+            <a class="nav-item nav-link" th:href= "@{/}">Home</a>
             <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
             <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
             <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
