@@ -4,7 +4,8 @@ import com.app.expensetracker.dto.UserCreateRequest;
 import com.app.expensetracker.entity.User;
 import org.springframework.http.ResponseEntity;
 
-import java.util.List;
+import java.util.
+        List;
 import java.util.Optional;
 
 public interface UserService {
