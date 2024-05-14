@@ -3,8 +3,11 @@ package com.app.expensetracker.entity;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -31,6 +34,14 @@ public class UserResponse {
 
     @Column(name="balance")
     private double balance;
+
+    @Column(name="Creation Time")
+    @CreationTimestamp
+    private LocalDateTime dateCreated;
+
+    @Column(name="Last Updated")
+    @UpdateTimestamp
+    private LocalDateTime lastUpdated;
 
     @JsonManagedReference
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)

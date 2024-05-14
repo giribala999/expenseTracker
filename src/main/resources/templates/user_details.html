@@ -53,6 +53,8 @@
         <tr>
             <th> Activity Id</th>
             <th> Category Name</th>
+<!--            <th> Creation Time</th>-->
+            <th> Last Updated</th>
             <th>Transaction List</th>
             <th> Balance</th>
         </tr>
@@ -62,12 +64,16 @@
                 <tr  th:each="userResponse : ${user.userResponse}">
                             <td th:text = "${userResponse.response_id}"></td>
                             <td th:text = "${userResponse.categoryName}"></td>
+<!--                            <td th:text = "${userResponse.dateCreated}"></td>-->
+                            <td th:text = "${userResponse.lastUpdated}"></td>
                             <td th:text = "${userResponse.trans_list}"></td>
                             <td th:text = "${userResponse.balance}"></td>
                 </tr>
         </tbody>
     </table>
-
+    <p>In Balance Section :-</p>
+    <p>" Negative balance : amount (in Rs.) to be received from the users of the respective category"</p>
+    <p>" Positive balance : amount (in Rs.) to be given to the users of the respective category"</p>
 </div>
 </body>
 </html>

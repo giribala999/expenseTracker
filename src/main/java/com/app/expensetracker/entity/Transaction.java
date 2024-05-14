@@ -3,6 +3,8 @@ package com.app.expensetracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -28,21 +30,28 @@ public class Transaction {
     @Column(name="Id",nullable = false)
     String id;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="Transaction name")
     String transactionName;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="lenderFirstName")
     String lenderFirstName;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="lenderLastName")
     String lenderLastName;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="borrowerFirstName")
     String borrowerFirstName;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="borrowerLastName")
     String borrowerLastName;
 
+    @Size(min=1)
+    @NotBlank(message = "Do not leave blank")
     @Column(name="Price")
     double price;
 
@@ -54,6 +63,7 @@ public class Transaction {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="categoryName")
     String categoryName;
 

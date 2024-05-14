@@ -2,6 +2,7 @@ package com.app.expensetracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,9 +26,11 @@ public class User {
     @Column(name="Id",nullable = false)
     private String id;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="firstName")
     private String firstName;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="lastName")
     private String lastName;
 

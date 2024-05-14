@@ -31,8 +31,8 @@ public class TransactionController {
     @PostMapping("/create")
     public  String createTransaction( @Valid TransactionCreateRequest transactionCreateRequest,Model model) throws Exception {
         model.addAttribute("transaction", transactionService.createTransaction(transactionCreateRequest));
-        model.addAttribute("message", "You have registered successfully.");
-        return "redirect:/transaction/transaction_list";
+
+        return "success";
     }
 
     @GetMapping("/update_form/{trans_id}")
@@ -56,8 +56,8 @@ public class TransactionController {
         existingTransaction.setCategoryName(transaction.getCategoryName());
 
         transactionService.updateTransaction(existingTransaction);
-        model.addAttribute("message", "You have registered successfully.");
-        return "redirect:/transaction/transaction_list";
+
+        return "update";
     }
     @GetMapping("/get/{trans_id}")
     public String getTransactionById(@PathVariable String trans_id, Model model) {
@@ -69,7 +69,7 @@ public class TransactionController {
     @GetMapping("/delete/{trans_id}")
     public String deleteTransactionById(@PathVariable String trans_id) {
         transactionService.deleteTransactionById(trans_id);
-        return "redirect:/transaction/transaction_list";
+        return "delete";
     }
 
 

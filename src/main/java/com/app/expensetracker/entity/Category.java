@@ -3,6 +3,7 @@ package com.app.expensetracker.entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -25,6 +26,7 @@ public class Category {
     @Column(name="Id",nullable = false)
     private String id;
 
+    @NotBlank(message = "Do not leave blank")
     @Column(name="categoryName")
     private String categoryName;
 

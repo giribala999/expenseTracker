@@ -35,8 +35,8 @@ public class UserController {
     @PostMapping("/create")
     public  String createUser( @Valid UserCreateRequest userCreateRequest,Model model) throws Exception {
         model.addAttribute("user",userService.createUser(userCreateRequest));
-        model.addAttribute("message", "You have registered successfully.");
-        return "redirect:/user/user_list";
+
+        return "success";
     }
 
     @GetMapping("/update_form/{user_id}")
@@ -54,8 +54,8 @@ public class UserController {
 
         // save updated user object
         userService.updateUser(existingUser);
-        model.addAttribute("message", "You have registered successfully.");
-        return "redirect:/user/user_list";
+
+        return "update";
     }
     @GetMapping("/get/{user_id}")
     public String getUserById(@PathVariable String user_id, Model model) {
@@ -66,7 +66,7 @@ public class UserController {
     @GetMapping("/delete/{user_id}")
     public String deleteUserById(@PathVariable String user_id) {
         userService.deleteUserById(user_id);
-        return "redirect:/user/user_list";
+        return "delete";
     }
 
 }

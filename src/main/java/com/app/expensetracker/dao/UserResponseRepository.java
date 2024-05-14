@@ -15,4 +15,7 @@ public interface UserResponseRepository extends JpaRepository<UserResponse, Stri
 
     UserResponse findByUserAndCategoryName(User user,String categoryName);
 
+
+
+
 }
