@@ -17,6 +17,15 @@
           font-family: verdana;
           font-size: 400%;
         }
+
+        h3{
+          text-align: center;
+          color: #00008B;
+          padding: 30px;
+          font-family: 'Times New Roman', serif;
+          font-size: 400%;
+        }
+
         p {text-align: center;
           color: red;
         }
@@ -58,17 +67,26 @@
     </style>
 </head>
 <body>
-
+<br>
+<br>
     <h1>EXPENSE TRACKER</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+        <h3>Welcome User !!!</h3>
 
-<!--    <div class="container">-->
         <div class="center">
             <div class = "row">
 
-            <a th:href = "@{/user/user_list}" class="button">User</a>
-            <a th:href = "@{/category/category_list}" class="button">Category</a>
-            <a th:href = "@{/transaction/transaction_list}" class="button">Transaction</a>
-<!--        <button class="button">Transaction</button>-->
+                <a th:href = "@{/user/login_form}" class="button">Login (Existing Users)</a>
+                <a th:href = "@{/user/create_form}" class="button">Register (New User)</a>
+<!--            <a th:href = "@{/category/category_list}" class="button">Category</a>-->
+<!--            <a th:href = "@{/transaction/transaction_list}" class="button">Transaction</a>-->
+
 
             </div>
         </div>

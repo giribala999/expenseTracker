@@ -27,7 +27,7 @@ public class Category {
     private String id;
 
     @NotBlank(message = "Do not leave blank")
-    @Column(name="categoryName")
+    @Column(name="categoryName", unique = true)
     private String categoryName;
 
     @JsonManagedReference // to prevent infinite json recursion

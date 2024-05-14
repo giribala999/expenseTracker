@@ -13,6 +13,6 @@ public interface TransactionService {
     Transaction createTransaction(TransactionCreateRequest transactionCreateRequest) throws Exception;
     Transaction getTransactionById(String transaction_id);
     List<Transaction> getAllTransactions();
-    Transaction updateTransaction(Transaction transaction);
+    Transaction updateTransaction(Transaction transaction) throws Exception;
     ResponseEntity<Optional<Transaction>> deleteTransactionById(String transaction_id);
 }

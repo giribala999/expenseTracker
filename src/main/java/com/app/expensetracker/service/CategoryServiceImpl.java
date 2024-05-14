@@ -46,9 +46,17 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     @Transactional
-    public Category updateCategory(Category category){
-       // Category category = categoryCreateRequest.to();
-        return categoryRepository.save(category);
+    public Category updateCategory(Category category)throws Exception{
+
+        Category local= this.categoryRepository.findByCategoryName(category.getCategoryName());
+
+        if(local!= null) {
+            System.out.println("Category already present!!!");
+            throw new Exception("Category already present!!!");
+        }
+        else{
+            return categoryRepository.save(category);
+        }
     }
 
     @Override

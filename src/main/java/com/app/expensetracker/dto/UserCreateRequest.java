@@ -19,11 +19,15 @@ public class UserCreateRequest {
     @NotBlank
     private String lastName;
 
+
+    private String password;
+
     public User to(){
         return User.builder()
                 .id(UUID.randomUUID().toString())
                 .firstName(this.firstName)
                 .lastName(this.lastName)
+                .password(this.password)
                 .build();
     }
 }

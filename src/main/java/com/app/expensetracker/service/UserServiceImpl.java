@@ -10,11 +10,17 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
+    @Override
+    public User authenticateUser(String firstName,String lastName, String password) {
+// Implement authentication logic here, e.g., fetching user by username and password from database
+        return  userRepository.findByFirstNameAndLastNameAndPassword(firstName,lastName,password);
+    }
 
     @Override
     @Transactional
@@ -46,9 +52,16 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
-    public User updateUser(User user){
-       // User user = userCreateRequest.to();
-        return userRepository.save(user);
+    public User updateUser(User user)throws Exception{
+        User local= this.userRepository.findByFirstNameAndLastName(user.getFirstName(), user.getLastName());
+
+        if(local!= null) {
+            System.out.println("User already present!!!");
+            throw new Exception("User already present!!!");
+        }
+        else{
+            return userRepository.save(user);
+        }
     }
 
     @Override

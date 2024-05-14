@@ -13,7 +13,10 @@ public interface UserService {
     User getUserById(String user_id);
 
     List<User> getAllUsers();
-    User updateUser(User user);
+    User updateUser(User user) throws Exception;
     ResponseEntity<Optional<User>> deleteUserById(String user_id);
 
+
+    // New method for user authentication
+    User authenticateUser(String firstName,String lastName, String password);
 }

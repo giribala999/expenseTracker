@@ -34,6 +34,8 @@ public class User {
     @Column(name="lastName")
     private String lastName;
 
+    private String password;
+
     @JsonBackReference
     @ManyToMany(mappedBy = "cat_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Category> categories;

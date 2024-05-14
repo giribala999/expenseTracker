@@ -160,8 +160,118 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     @Transactional
-    public Transaction updateTransaction(Transaction transaction){
-        return transactionRepository.save(transaction);
+    public Transaction updateTransaction(Transaction transaction) throws Exception{
+        Transaction local= this.transactionRepository.findByTransactionName(transaction.getTransactionName());
+
+        if(local!= null) {
+            System.out.println("Transaction already present!!!");
+            throw new Exception("Transaction already present!!!");
+        }
+
+        else{
+            User lender=this.userRepository.findByFirstNameAndLastName(transaction.getLenderFirstName(), transaction.getLenderLastName());
+            if(lender== null) {
+                System.out.println("User not present!!!");
+                throw new Exception("User not present!!!");
+            }
+
+
+            User borrower=this.userRepository.findByFirstNameAndLastName(transaction.getBorrowerFirstName(), transaction.getBorrowerLastName());
+            if(borrower== null) {
+                System.out.println("User not present!!!");
+                throw new Exception("User not present!!!");
+            }
+
+
+            Category category=this.categoryRepository.findByCategoryName(transaction.getCategoryName());
+            if(category== null) {
+                System.out.println("Category not present!!!");
+                throw new Exception("Category not present!!!");
+            }
+
+
+            List<User> cat_users;
+            if(category.getCat_users()==null){
+                cat_users=new ArrayList<>();
+                cat_users.add(lender);
+                cat_users.add(borrower);
+            }
+            else {
+                cat_users = category.getCat_users();
+
+                if(cat_users.contains(lender)){}
+                else {
+                    cat_users.add(lender);
+                }
+
+                if(cat_users.contains(borrower)){}
+                else {
+                    cat_users.add(borrower); //stores users in category
+                }
+            }
+
+            List<User> trans_users = new ArrayList<>();
+            trans_users.add(lender);
+            trans_users.add(borrower); //store users in transaction
+
+            category.setCat_users(cat_users);
+            transaction.setTrans_users(trans_users);
+
+            transaction.setCategory(category); //to store transaction in category
+
+
+            UserResponse local1=this.userResponseRepository.findByUserAndCategoryName(lender,transaction.getCategoryName());
+            UserResponse local2=this.userResponseRepository.findByUserAndCategoryName(borrower, transaction.getCategoryName());
+
+            double l,b, bal1=0,bal2=0;
+            l= -(transaction.getPrice());
+            b=transaction.getPrice();
+
+            UserResponse l_userResponse = new UserResponse();
+            List<Double> l_trans_list;
+            if(local1==null) {
+                bal1=l;
+                l_trans_list=new ArrayList<>();
+            }
+            else{
+                bal1=l+local1.getBalance();
+                l_trans_list=local1.getTrans_list();
+                l_userResponse.setResponse_id(local1.getResponse_id());
+            }
+
+            l_userResponse.setUser(lender);
+            l_userResponse.setCategoryName(category.getCategoryName());
+            l_userResponse.setBalance(bal1);
+            l_trans_list.add(l);
+            l_userResponse.setTrans_list(l_trans_list);
+
+            userResponseRepository.save(l_userResponse);
+
+
+
+            UserResponse b_userResponse = new UserResponse();
+            List<Double> b_trans_list;
+            if(local2==null) {
+                bal2=b;
+                b_trans_list=new ArrayList<>();
+            }
+            else{
+                bal2=b+ local2.getBalance();
+                b_trans_list=local2.getTrans_list();
+                b_userResponse.setResponse_id(local2.getResponse_id());
+
+            }
+            b_userResponse.setUser(borrower);
+            b_userResponse.setCategoryName(category.getCategoryName());
+            b_userResponse.setBalance(bal2);
+            b_trans_list.add(b);
+            b_userResponse.setTrans_list(b_trans_list);
+
+            userResponseRepository.save(b_userResponse);
+
+
+            return transactionRepository.save(transaction);
+        }
     }
 
 

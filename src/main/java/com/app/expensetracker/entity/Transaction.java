@@ -3,7 +3,9 @@ package com.app.expensetracker.entity;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
@@ -50,8 +52,8 @@ public class Transaction {
     @Column(name="borrowerLastName")
     String borrowerLastName;
 
-    @Size(min=1)
-    @NotBlank(message = "Do not leave blank")
+   // @Size(min=1)
+    @Min(value=1)
     @Column(name="Price")
     double price;
 

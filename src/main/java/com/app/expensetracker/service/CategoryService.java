@@ -13,6 +13,6 @@ public interface CategoryService {
     Category createCategory(CategoryCreateRequest categoryCreateRequest) throws Exception;
     Category getCategoryById(String category_id);
     List<Category> getAllCategories();
-    Category updateCategory(Category category);
+    Category updateCategory(Category category) throws Exception;
     ResponseEntity<Optional<Category>> deleteCategoryById(String category_id);
 }
