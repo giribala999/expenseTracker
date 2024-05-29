@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
     public class IndexController {
 
         @GetMapping("/")
-        public String index() {
-
+        public String index() //Handles GET requests to the root URL ("/") and returns the welcome view.
+        {
             return "welcome";
         }
 

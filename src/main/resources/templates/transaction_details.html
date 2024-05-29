@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Transaction</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,8 +11,8 @@
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -26,12 +27,13 @@
 <br>
 <div class ="container">
     <div class = "row">
+        <!-- Heading for displaying transaction details -->
         <h1> Transaction Details </h1>
     </div>
 
 
 
-
+    <!-- Table to display transaction details -->
     <table class = "table align-middle">
         <thead class = "table-success" >
         <tr>
@@ -41,7 +43,7 @@
         </thead>
 
         <tbody class = "table-success">
-            <td th:text = "${transaction.id}"></td>
+            <td th:text = "${transaction.trans_id}"></td>
             <td th:text = "${transaction.transactionName}"></td>
 
         </tbody>
@@ -52,6 +54,7 @@
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
+            <!-- Columns for various transaction details -->
             <th> Category Name </th>
             <th> Lender First Name</th>
             <th> Lender Last Name</th>

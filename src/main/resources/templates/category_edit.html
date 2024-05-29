@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Edit Category</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,8 +11,8 @@
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -27,11 +28,14 @@
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <!-- Header for the form -->
             <h1 class = "text-center"> Update Existing Category </h1>
             <div class = "card-body">
-                <form th:action="@{/category/update/{catId} (catId=${category.id})}" th:method="post" th:object="${category}">
+                <!-- Form to update an existing category -->
+                <form th:action="@{/category/update/{catId} (catId=${category.cat_id})}" th:method="post" th:object="${category}">
                     <div class ="form-group">
                         <label> Category Name </label>
+                        <!-- Input for category name -->
                         <input
                                 type = "text"
                                 name = "categoryName"
@@ -41,6 +45,7 @@
                         />
                     </div>
 
+                    <!-- Submit button -->
                     <div class = "box-footer">
                         <button type="submit" class = "btn btn-primary">Submit</button>
                     </div>
@@ -52,7 +57,6 @@
 </div>
 
 <br/>
-
 
 
 </body>

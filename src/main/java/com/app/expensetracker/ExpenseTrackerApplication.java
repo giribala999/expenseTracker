@@ -5,11 +5,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication //(exclude = {DataSourceAutoConfiguration.class })
-//@ComponentScan(basePackages = "com.app.*")
-//@EntityScan("com.app.*")
-//@EnableJpaRepositories(basePackages = "com.app.expensetracker.repository")
-
+/**
+ * ExpenseTrackerApplication is the main class that starts the Expense Tracker application.
+ */
+@SpringBootApplication
 public class ExpenseTrackerApplication {
 
 	public static void main(String[] args) {

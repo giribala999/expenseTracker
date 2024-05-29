@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * CategoryService provides methods for managing categories in the expense tracker system.
+ */
 public interface CategoryService {
 
     Category createCategory(CategoryCreateRequest categoryCreateRequest) throws Exception;

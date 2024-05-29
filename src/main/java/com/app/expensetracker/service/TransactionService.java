@@ -8,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * TransactionService provides methods for managing transactions in the expense tracker system.
+ */
 public interface TransactionService {
 
     Transaction createTransaction(TransactionCreateRequest transactionCreateRequest) throws Exception;

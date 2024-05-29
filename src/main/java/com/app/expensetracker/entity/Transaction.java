@@ -30,7 +30,7 @@ public class Transaction {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="Id",nullable = false)
-    String id;
+    String trans_id;
 
     @NotBlank(message = "Do not leave blank")
     @Column(name="Transaction name")
@@ -52,7 +52,6 @@ public class Transaction {
     @Column(name="borrowerLastName")
     String borrowerLastName;
 
-   // @Size(min=1)
     @Min(value=1)
     @Column(name="Price")
     double price;
@@ -69,10 +68,17 @@ public class Transaction {
     @Column(name="categoryName")
     String categoryName;
 
+    /**
+     * The list of users associated with this transaction.
+     */
     @JsonManagedReference
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<User> trans_users=new ArrayList<>();
 
+
+    /**
+     * The category associated with this transaction.
+     */
     @JsonManagedReference
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "cat_id")

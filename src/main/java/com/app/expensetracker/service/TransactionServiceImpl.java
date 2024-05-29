@@ -18,6 +18,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * TransactionServiceImpl is an implementation of the TransactionService interface.
+ * It provides methods for managing transactions in the expense tracker system.
+ */
 @Service
 public class TransactionServiceImpl implements TransactionService {
     @Autowired

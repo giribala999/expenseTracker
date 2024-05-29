@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Add User</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,8 +11,8 @@
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -26,12 +27,15 @@
 <br>
 <div class = "container">
     <div class = "row">
+        <!-- Form for creating a new user -->
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <!-- Title for the form -->
             <h1 class = "text-center"> Create New User </h1>
             <div class = "card-body">
                 <form th:action="@{/user/create}" th:method="post" th:object="${user}">
                     <div class ="form-group">
                         <label> First Name </label>
+                        <!-- Input field for first name -->
                         <input
                                 type = "text"
                                 name = "firstName"
@@ -43,6 +47,7 @@
 
                     <div class ="form-group">
                         <label> Last Name </label>
+                        <!-- Input field for last name -->
                         <input
                                 type = "text"
                                 name = "lastName"
@@ -54,6 +59,7 @@
 
                     <div>
                         <label>Password:</label>
+                        <!-- Input field for password -->
                         <input
                                 type="password"
                                 name = "password"
@@ -63,6 +69,7 @@
                         />
                     </div>
 
+                    <!-- Submit button -->
                     <div class = "box-footer">
                         <button type="submit" class = "btn btn-primary">Submit</button>
                     </div>
@@ -74,8 +81,6 @@
 </div>
 
 <br/>
-
-
 
 </body>
 </html>

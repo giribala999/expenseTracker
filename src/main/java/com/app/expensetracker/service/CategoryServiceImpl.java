@@ -11,6 +11,11 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
+
+/**
+ * CategoryServiceImpl is an implementation of the CategoryService interface.
+ * It provides methods for managing categories in the expense tracker system.
+ */
 @Service
 public class CategoryServiceImpl implements CategoryService{
     @Autowired

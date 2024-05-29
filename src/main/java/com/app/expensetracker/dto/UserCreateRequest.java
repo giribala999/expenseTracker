@@ -1,9 +1,14 @@
 package com.app.expensetracker.dto;
+
 import com.app.expensetracker.entity.User;
 import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
 import java.util.UUID;
 
+/**
+ * UserCreateRequest is a Data Transfer Object (DTO) for creating a new User.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -13,18 +18,17 @@ import java.util.UUID;
 
 public class UserCreateRequest {
 
-    @NotBlank
+    @NotBlank //The first name of the user cannot be blank.
     private String firstName;
 
-    @NotBlank
+    @NotBlank //The last name of the user cannot be blank.
     private String lastName;
-
 
     private String password;
 
-    public User to(){
+    public User to() {
         return User.builder()
-                .id(UUID.randomUUID().toString())
+                .user_id(UUID.randomUUID().toString())
                 .firstName(this.firstName)
                 .lastName(this.lastName)
                 .password(this.password)

@@ -8,14 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface UserResponseRepository extends JpaRepository<UserResponse, String> {
 
-
-    UserResponse findByUser(User user);
-
-    UserResponse findByCategoryName(String categoryName);
-
-    UserResponse findByUserAndCategoryName(User user,String categoryName);
-
-
-
+    UserResponse findByUserAndCategoryName(User user,String categoryName); //Finds a UserResponse by the associated User and category name.
 
 }

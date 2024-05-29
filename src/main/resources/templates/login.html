@@ -2,31 +2,33 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Login</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <!-- Inline CSS for custom styling -->
     <style>
         h1 {
-         text-align: center;
-         color: #00008B;
-         border: 3px solid black;
-         padding: 30px;
-         font-family: verdana;
-         font-size: 400%;
-       }
+          text-align: center;
+          color: #00008B;  /* Dark blue color */
+          border: 3px solid black;  /* Border around the heading */
+          padding: 30px;  /* Padding inside the border */
+          font-family: verdana;  /* Font style */
+          font-size: 400%;  /* Font size */
+      }
 
-       h5 {
-        text-align: center;
-        color: red;
+      h5 {
+          text-align: center;
+          color: red;  /* Red color for error message */
       }
     </style>
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -36,14 +38,17 @@
 
 <br>
 <br>
+<!-- Main heading of the page -->
 <h1>EXPENSE TRACKER</h1>
 <br>
 <br>
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <!-- Header for the form -->
             <h2 class = "text-center"> User Login </h2>
             <div class = "card-body">
+            <!-- Form for user login -->
             <form th:action="@{/user/login}" th:object="${user}" method="post">
                 <div class ="form-group">
                     <label> First Name </label>
@@ -78,6 +83,7 @@
                     />
                 </div>
 
+                <!-- Submit button -->
                 <div class = "box-footer">
                     <button type="submit" class = "btn btn-primary">Submit</button>
                 </div>

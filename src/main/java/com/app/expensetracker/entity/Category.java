@@ -24,16 +24,23 @@ public class Category {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="Id",nullable = false)
-    private String id;
+    private String cat_id;
 
     @NotBlank(message = "Do not leave blank")
     @Column(name="categoryName", unique = true)
     private String categoryName;
 
+    /**
+     * The list of users associated with this category.
+     */
     @JsonManagedReference // to prevent infinite json recursion
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<User> cat_users;
 
+
+    /**
+     * The list of transactions associated with this category.
+     */
     @JsonBackReference
     @OneToMany(mappedBy = "category",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Transaction> transactions=new ArrayList<>();

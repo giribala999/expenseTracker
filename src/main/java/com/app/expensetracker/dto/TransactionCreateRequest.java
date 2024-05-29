@@ -5,6 +5,9 @@ import lombok.*;
 
 import java.util.UUID;
 
+/**
+ * TransactionCreateRequest is a Data Transfer Object (DTO) for creating a new Transaction.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -12,7 +15,7 @@ import java.util.UUID;
 @Builder
 @ToString
 public class TransactionCreateRequest {
-    @NotBlank
+    @NotBlank //The name of the transaction cannot be blank.
     private String transactionName;
 
     private String lenderFirstName;
@@ -20,15 +23,15 @@ public class TransactionCreateRequest {
     private String borrowerFirstName;
     private String borrowerLastName;
 
-    @NonNull
+    @NonNull //price associated with the transaction cannot be null.
     private double price;
 
-    @NotBlank
+    @NotBlank // The name of the category cannot be blank.
     private String categoryName;
 
     public Transaction to(){
         return Transaction.builder()
-                .id(UUID.randomUUID().toString())
+                .trans_id(UUID.randomUUID().toString())
                 .transactionName(this.transactionName)
                 .lenderFirstName(this.lenderFirstName)
                 .lenderLastName(this.lenderLastName)

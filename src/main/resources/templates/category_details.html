@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Category</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,10 +11,9 @@
 </head>
 
 <body>
-<!--<nav class="navbar navbar-expand-md bg-info navbar-light">-->
+
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-<!--<nav class="navbar navbar-expand-md navbar-custom">-->
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -28,42 +28,44 @@
 <br>
 <div class ="container">
     <div class = "row">
+        <!-- Header for the category details -->
         <h1> Category Details </h1>
     </div>
 
-
+    <!-- Table to display the category details -->
     <table class = "table align-middle">
         <thead class = "table-success" >
         <tr>
+            <!-- Table column headers -->
             <th> Category Id</th>
             <th> Category Name</th>
         </tr>
         </thead>
 
         <tbody class = "table-success">
-                <td th:text="${category.id}"></td>
+                <td th:text="${category.cat_id}"></td>
                 <td th:text="${category.categoryName}"></td>
         </tbody>
-
     </table>
 
 
+    <!-- Table to display the list of users in the category -->
     <table class = "table table-striped table-bordered">
         <thead class = "table-dark">
         <tr>
+            <!-- Table column headers -->
             <th> User Id</th>
             <th> First Name</th>
             <th> Last Name</th>
         </tr>
         </thead>
-
+        <!-- Table body -->
         <tbody>
-
+        <!-- Loop through the list of users in the category using Thymeleaf -->
                 <tr  th:each="user : ${category.cat_users}">
-                            <td th:text = "${user.id}"></td>
+                            <td th:text = "${user.user_id}"></td>
                             <td th:text = "${user.firstName}"></td>
                             <td th:text = "${user.lastName}"></td>
-
                 </tr>
 
         </tbody>

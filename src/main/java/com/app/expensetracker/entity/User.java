@@ -24,7 +24,7 @@ public class User {
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name="Id",nullable = false)
-    private String id;
+    private String user_id;
 
     @NotBlank(message = "Do not leave blank")
     @Column(name="firstName")
@@ -36,14 +36,24 @@ public class User {
 
     private String password;
 
+    /**
+     * The categories associated with this user.
+     */
     @JsonBackReference
     @ManyToMany(mappedBy = "cat_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Category> categories;
 
+    /**
+     * The transactions associated with this user.
+     */
     @JsonBackReference
     @ManyToMany(mappedBy = "trans_users",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<Transaction> user_transactions=new ArrayList<>();
 
+
+    /**
+     * The responses associated with this user.
+     */
     @JsonBackReference
     @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     private List<UserResponse> userResponse=new ArrayList<>();

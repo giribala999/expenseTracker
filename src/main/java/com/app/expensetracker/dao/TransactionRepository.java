@@ -8,7 +8,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface TransactionRepository extends JpaRepository<Transaction, String> {
 
-  Transaction findByTransactionName(String transactionName);
-
+  Transaction findByTransactionName(String transactionName); //Finds a transaction by its name.
 
 }

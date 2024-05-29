@@ -8,6 +8,9 @@ import lombok.*;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * CategoryCreateRequest is a Data Transfer Object (DTO) for creating a new Category.
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -15,12 +18,12 @@ import java.util.UUID;
 @Builder
 @ToString
 public class CategoryCreateRequest {
-    @NotBlank
+    @NotBlank // The name of the category cannot be blank.
     private String categoryName;
 
     public Category to(){
         return Category.builder()
-                .id(UUID.randomUUID().toString())
+                .cat_id(UUID.randomUUID().toString())
                 .categoryName(this.categoryName)
                 .build();
     }

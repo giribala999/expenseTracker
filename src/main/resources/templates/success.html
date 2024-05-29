@@ -2,36 +2,43 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Added</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-
+    <!-- Inline CSS for custom styling -->
     <style>
-        div {text-align: center;}
+        div {text-align: center; /* Center-aligns the text within the divs */
+        }
     </style>
 
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
+            <!-- Home link -->
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
+            <!-- User link -->
             <a class="nav-item nav-link" th:href= "@{/user/user_list}">User </a>
+            <!-- Category link -->
             <a class="nav-item nav-link" th:href= "@{/category/category_list}">Category</a>
+            <!-- Transaction link -->
             <a class="nav-item nav-link" th:href= "@{/transaction/transaction_list}">Transaction</a>
         </div>
     </div>
 </nav>
 
 <br>
+<!-- Container to display the success message -->
     <div class="center">
+        <!-- Success message -->
         <h1>Successfully added......!!!</h1>
     </div>
-
 
 </body>
 </html>

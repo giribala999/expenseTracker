@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="ISO-8859-1">
+    <!-- Title of the webpage -->
     <title>Edit User</title>
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -10,8 +11,8 @@
 </head>
 <body>
 
+<!-- Navigation bar -->
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
-    <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <div class="navbar-nav">
             <a class="nav-item nav-link" th:href= "@{/}">Home</a>
@@ -27,10 +28,13 @@
 <div class = "container">
     <div class = "row">
         <div class ="col-lg-6 col-md-6 col-sm-6 container justify-content-center card">
+            <!-- Heading for updating an existing user -->
             <h1 class = "text-center"> Update Existing User </h1>
             <div class = "card-body">
-                <form th:action="@{/user/update/{user_id} (user_id=${user.id})}" th:method="post" th:object="${user}">
+                <!-- Form for updating user information -->
+                <form th:action="@{/user/update/{user_id} (user_id=${user.user_id})}" th:method="post" th:object="${user}">
                     <div class ="form-group">
+                        <!-- Input field for first name -->
                         <label> First Name </label>
                         <input
                                 type = "text"
@@ -42,6 +46,7 @@
                     </div>
 
                     <div class ="form-group">
+                        <!-- Input field for last name -->
                         <label> Last Name </label>
                         <input
                                 type = "text"
@@ -52,8 +57,19 @@
                         />
                     </div>
 
-
+                    <div>
+                        <!-- Input field for password -->
+                        <label>Password:</label>
+                        <input
+                                type="password"
+                                name = "password"
+                                th:field="*{password}"
+                                class = "form-control"
+                                placeholder="Enter Password"
+                        />
+                    </div>
                     <div class = "box-footer">
+                        <!-- Button to submit the form -->
                         <button type="submit" class = "btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -64,7 +80,6 @@
 </div>
 
 <br/>
-
 
 
 </body>

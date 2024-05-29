@@ -43,6 +43,10 @@ public class UserResponse {
     @UpdateTimestamp
     private LocalDateTime lastUpdated;
 
+
+    /**
+     * The user associated with this response.
+     */
     @JsonManagedReference
     @ManyToOne( cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

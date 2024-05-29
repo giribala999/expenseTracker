@@ -7,6 +7,9 @@ import org.springframework.http.ResponseEntity;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * UserService is an interface providing methods for managing users in the expense tracker system.
+ */
 public interface UserService {
 
     User createUser(UserCreateRequest userCreateRequest) throws Exception;

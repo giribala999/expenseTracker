@@ -10,15 +10,19 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-
+/**
+ * UserServiceImpl is the implementation of the UserService interface.
+ * It provides methods for managing users in the expense tracker system.
+ */
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
     @Override
-    public User authenticateUser(String firstName,String lastName, String password) {
-// Implement authentication logic here, e.g., fetching user by username and password from database
+    public User authenticateUser(String firstName,String lastName, String password) // Authenticates a user based on the provided credentials.
+    {
+// Implementation of authentication logic i.e. fetching user by username and password from database
         return  userRepository.findByFirstNameAndLastNameAndPassword(firstName,lastName,password);
     }
 
