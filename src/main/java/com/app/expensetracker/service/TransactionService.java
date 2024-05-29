@@ -1,8 +1,6 @@
 package com.app.expensetracker.service;
-
 import com.app.expensetracker.dto.TransactionCreateRequest;
 import com.app.expensetracker.entity.Transaction;
-import com.app.expensetracker.entity.User;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;

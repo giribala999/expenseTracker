@@ -1,5 +1,4 @@
 package com.app.expensetracker.service;
-
 import com.app.expensetracker.dao.CategoryRepository;
 import com.app.expensetracker.dao.TransactionRepository;
 import com.app.expensetracker.dao.UserRepository;
@@ -13,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;

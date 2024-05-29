@@ -1,11 +1,8 @@
 package com.app.expensetracker.dto;
 import com.app.expensetracker.entity.Category;
-import com.app.expensetracker.entity.User;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Size;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
 /**
